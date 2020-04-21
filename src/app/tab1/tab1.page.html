@@ -1,0 +1,107 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <table class="cust-tbl">
+      <tr>
+        <td col="5">
+          <p>Калькулятор запасов</p>
+        </td>
+        <td col="1" class="cust-right">
+          <ion-icon name="information-circle-outline" color="primary" (click)="presentPopover1($event)" class="icon-info"></ion-icon>
+        </td>
+      </tr>
+    </table>
+    <!--ion-row>
+      <ion-col >
+        <p>Калькулятор запас</p>
+      </ion-col>
+      <ion-col>
+        <ion-icon class="info-toolbar" name="information-circle-outline" color="primary"></ion-icon>
+      </ion-col>
+    </ion-row-->
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-segment class="segment-cust" [(ngModel)]="paper_long_pice" value="1" (ionChange)="paperOnchange($event)">
+    <ion-segment-button value="1" mode="ios">
+      <ion-label color="primary">Длинна рулона (метров)</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="2" mode="ios">
+      <ion-label color="primary">Кол. листов в рулоне</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-item [hidden]="paper_long_pice == '2'">
+    <ion-label>Длинна:</ion-label>
+    <ion-input type="number" [(ngModel)]="longPapers" (ionChange)="paperOnchange($event)" color="primary"></ion-input>
+  </ion-item>
+  <ion-item [hidden]="paper_long_pice == '1'">
+    <ion-label>Количестко листов:</ion-label>
+    <ion-input type="number" [(ngModel)]="picePapers" (ionChange)="paperOnchange($event)" color="primary"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Количество листов:</ion-label>
+    <ion-select interface="popover" placeholder="Выбери" value="4" [(ngModel)]="selectPaper" (ionChange)="paperOnchange($event)">
+      <ion-select-option value="4" color="primary">Однослойная</ion-select-option>
+      <ion-select-option value="3">Двухслойная</ion-select-option>
+      <ion-select-option value="2">Трехслойная</ion-select-option>
+      <ion-select-option value="1">Четырехслойная</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Члены семьи:</ion-label>
+    <ion-select interface="popover" placeholder="Выбери" value="3" [(ngModel)]="peopleCnt" (ionChange)="paperOnchange($event)">
+      <ion-select-option value="1">1</ion-select-option>
+      <ion-select-option value="2">2</ion-select-option>
+      <ion-select-option value="3">3</ion-select-option>
+      <ion-select-option value="4">4</ion-select-option>
+      <ion-select-option value="5">5</ion-select-option>
+      <ion-select-option value="6">6</ion-select-option>
+      <ion-select-option value="7">7</ion-select-option>
+      <ion-select-option value="8">8</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <table class="cust-tbl">
+    <tr>
+      <td cols="3" >
+        <ion-label>Посещений:</ion-label>
+      </td>
+      <td cols="2" class="cust-right">
+        <ion-select interface="popover" placeholder="Выбери" value="3" [(ngModel)]="visitCnt" (ionChange)="paperOnchange($event)">
+          <ion-select-option value="1">1</ion-select-option>
+          <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="5">5</ion-select-option>
+          <ion-select-option value="6">6</ion-select-option>
+          <ion-select-option value="7">7</ion-select-option>
+          <ion-select-option value="8">8</ion-select-option>
+        </ion-select>
+      </td>
+      <td class="icon-cust-right">
+        <ion-icon name="information-circle-outline" color="primary" (click)="presentPopover($event)" class="icon-info"></ion-icon>
+      </td>
+    </tr>
+  </table>
+  </ion-item>
+    <ion-segment class="segment-cust" [(ngModel)]="days_rulon_flg" value="1" (ionChange)="paperOnchange($event)">
+      <ion-segment-button value="1" mode="ios">
+        <ion-label color="primary">Бумаги на N дней</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="2" mode="ios">
+        <ion-label color="primary">У меня есть N рулонов</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  <ion-item [hidden]="days_rulon_flg == '2'">
+    <ion-label>Дней:</ion-label>
+    <ion-input type="number" [(ngModel)]="days" (ionChange)="paperOnchange($event)" color="primary"></ion-input>
+  </ion-item>
+  <ion-item [hidden]="days_rulon_flg == '1'">
+    <ion-label>Рулонов:</ion-label>
+    <ion-input type="number" [(ngModel)]="rulonCnt" (ionChange)="paperOnchange($event)" color="primary"></ion-input>
+  </ion-item>
+  <h1 class="cust-res">{{res}}</h1>
+</ion-content>

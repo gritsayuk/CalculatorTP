@@ -1,0 +1,11 @@
+{
+    "android": {
+      "release": {
+        "keystore": "./certificates/calculator-tp.jks",
+        "storePassword": "220581",
+        "alias": "calculator-tp",
+        "password" : "220581",
+        "keystoreType": ""
+      }
+    }
+  }
